@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% if refresh %}
+    <meta http-equiv="refresh" content="{{refresh}}">
+    {% endif %}
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'tf_identification/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'tf_identification/css/scrolling-nav.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <script src="https://use.fontawesome.com/c76b0a7440.js"></script>
+
+  </head>
+
+  <body id="page-top" style="background-color: #ffffff">
+
+    <!-- Navigation -->
+    {% include navbar %}
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    {% include footer %}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'tf_identification/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'tf_identification/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'tf_identification/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{% static 'tf_identification/js/scrolling-nav.js' %}"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,22 @@
+[
+	{"tf": "E2F4 motif1", "value": 0.026},
+	{"tf": "RUNX2 motif2", "value": 0.026},
+	{"tf": "FOXO6 motif2", "value": 0.025},
+	{"tf": "ZNF740 motif1", "value": 0.028},
+	{"tf": "FEV motif2", "value": 0.025},
+	{"tf": "ZIC3 motif1", "value": 0.025},
+	{"tf": "RFX1 motif3", "value": 0.026},
+	{"tf": "TFAP2E motif1", "value": 0.026},
+	{"tf": "ZIC1 motif2", "value": 0.029},
+	{"tf": "NR0B1 motif1", "value": 0.027},
+	{"tf": "REL motif1", "value": 0.028},
+	{"tf": "TFAP2C motif3", "value": 0.025},
+	{"tf": "TAF1 motif1", "value": 0.028},
+	{"tf": "WT1 motif1", "value": 0.027},
+	{"tf": "MZF1 motif1", "value": 0.027},
+	{"tf": "TFAP2B motif2", "value": 0.026},
+	{"tf": "ZIC3 motif2", "value": 0.025},
+	{"tf": "HIF1A motif1", "value": 0.026},
+	{"tf": "PATZ1 motif1", "value": 0.026},
+	{"tf": "ETS2 motif2", "value": 0.026}
+]

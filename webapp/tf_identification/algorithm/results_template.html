@@ -1,0 +1,37 @@
+{% extends "tf_identification/skeleton.html" %}
+
+{% block title %}
+Li Lab - UCSF
+{% endblock %}
+
+{% block content %}
+    <header>
+      <div class="container text-center">
+          <h1>Success!</h1>
+          <p><img src="/static/tf_identification/img/checkmark.png" style="width: 5%"></p>
+          <p><a class='btn btn-primary' href="[DOWNLOAD LINK]" download>Download Correlations (.CSV)</a></p>
+
+
+      </div>
+    </header>
+
+    <section style="padding-top: 0px;" class="container">
+        <div id="accordion" aria-multiselectable="true">
+            [ACCORDION]
+        </div>
+    </section>
+
+
+    <!--
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About</h2>
+            <p>This tool was created in Hao Li's lab at UCSF.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+{% endblock %}

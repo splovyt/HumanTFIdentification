@@ -1,0 +1,12 @@
+[
+	{"tf": "ETS2 motif2", "value": 0.068},
+	{"tf": "IRF4 motif2", "value": 0.058},
+	{"tf": "SPI1 motif3", "value": 0.062},
+	{"tf": "STAT3 motif1", "value": 0.065},
+	{"tf": "RELB motif1", "value": 0.066},
+	{"tf": "REL motif1", "value": 0.069},
+	{"tf": "FEV motif2", "value": 0.075},
+	{"tf": "ETV5 motif2", "value": 0.071},
+	{"tf": "UBP1 motif1", "value": 0.061},
+	{"tf": "NFKB1 motif1", "value": 0.065}
+]

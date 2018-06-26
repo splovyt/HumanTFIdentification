@@ -1,0 +1,88 @@
+{% extends "tf_identification/skeleton.html" %}
+
+{% block title %}
+Li Lab - UCSF
+{% endblock %}
+
+{% block content %}
+    <header>
+      <div class="container text-center">
+      <a style="max-width: inherit" href="http://mobydick.ucsf.edu/">
+        <img src="/static/tf_identification/img/lilab_logo.png" class="center" style="max-width: inherit">
+      </a>
+        <a class="btn btn-primary btn-large navbar-brand js-scroll-trigger" href="/#tf_identification">Human TF identification</a>
+      </div>
+    </header>
+
+    <section id="tf_identification" style="padding-top: 0px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Human transcription factor identification</h2>
+            <p class="lead" style="font-size: 14px;">Identify crucial human transcription factors by uploading a .csv file of gene expression fold changes.</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p><input type="file" name="file" id="id_file" required=""></p>
+                <p>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-secondary active">
+                        <input type="checkbox" name='gorilla' id="gorilla" checked> include GOrilla Gene Ontology analysis
+                      </label>
+                    </div>
+                </p>
+                <p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="topTF" id="top10" autocomplete="off" value="10">Top 10 TFs
+                  </label>
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="topTF" id="top20" autocomplete="off" value="20" checked>Top 20 TFs
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="topTF" id="top30" autocomplete="off" value="50">Top 50 TFs
+                  </label>
+                </div>
+                </p>
+                <p>
+                    <input class='btn btn-primary' type="submit" value="Upload"/>
+                    <br><b style="font-size: 12px;"> estimated runtime: ± 2 min per condition</b>
+                </p>
+            </form>
+              <p style="padding-top: 50px; font-weight: 700; font-size: 16px;">
+                Appropriate file formatting
+              </p>
+              <p style="font-size: 14px;">
+                To prevent undesirable outcomes due to file parsing, the input file is best uploaded in <b style="font-weight: 900;">.CSV format</b>
+                  (comma separated values) with the measured <b style="font-weight: 900;">gene names as the first (index-) column</b> and the <b style="font-weight: 900;">following columns
+                  the different experimental conditions</b> for which gene expression was characterized. <b style="font-weight: 900;">In other words,
+                  the .CSV file must contain an index column and a header.</b><br>
+                  Gene expression data can be either input as fold changes (FC) or log-transformed fold changes.
+              </p>
+              <p style="font-size: 14px;">
+                  An example of the desired format can be found below. <br>
+                  Click the image or <a href="/static/tf_identification/sample_data.csv" download>here</a> to download the depicted sample file.
+                  <a href="/static/tf_identification/sample_data.csv" download>
+                      <img src="/static/tf_identification/img/sample_data.png" width="500px">
+                  </a>
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About</h2>
+            <p>This tool was created in Hao Li's lab at UCSF.</p>
+            <p>Thanks to Eden et al.
+                (<a href="http://www.biomedcentral.com/1471-2105/10/48" target="_blank">2009</a>) for developing and maintaining
+                <a href="http://cbl-gorilla.cs.technion.ac.il/" target="_blank">GOrilla</a>.<br>
+                In addition, thanks to Cusanovich et al. (<a href="http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004226" target="_blank">2014</a>) for providing the sample gene expression data (<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE50588" target="_blank">GSE50588</a>).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

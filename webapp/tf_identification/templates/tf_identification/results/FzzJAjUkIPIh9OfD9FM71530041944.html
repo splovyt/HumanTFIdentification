@@ -1,0 +1,1059 @@
+{% extends "tf_identification/skeleton.html" %}
+
+{% block title %}
+Li Lab - UCSF
+{% endblock %}
+
+{% block content %}
+    <header>
+      <div class="container text-center">
+          <h1>Success!</h1>
+          <p><img src="/static/tf_identification/img/checkmark.png" style="width: 5%"></p>
+          <p><a class='btn btn-primary' href="/static/tf_identification/results/FzzJAjUkIPIh9OfD9FM71530041944.csv" download>Download Correlations (.CSV)</a></p>
+
+
+      </div>
+    </header>
+
+    <section style="padding-top: 0px;" class="container">
+        <div id="accordion" aria-multiselectable="true">
+                       <div class="card">
+                    <div class="card-header" id="heading0">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse0" aria-expanded="true" aria-controls="collapse0" >
+                          IRF4
+                        </button>
+                        
+                      </h5>
+                    </div>
+
+                    <div id="collapse0" class="collapse" aria-labelledby="heading0" data-parent="#accordion">
+                      <div class="card-body">
+                        <style>
+.bar {
+	fill: #29b936;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+.x path {
+	display: none;
+}
+.toolTip {
+	position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #29b936;
+  padding: 14px;
+  text-align: center;
+}
+</style>
+<p>
+<svg id="svg0" width="960" height="600" class="center"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var svg0 = d3.select("#svg0"),
+    margin = {top: 20, right: 20, bottom: 30, left: 80},
+    width = +svg0.attr("width") - margin.left - margin.right,
+    height = +svg0.attr("height") - margin.top - margin.bottom;
+
+var tooltip0 = d3.select("body").append("div").attr("class", "toolTip");
+
+var x = d3.scaleLinear().range([0, width]);
+var y = d3.scaleBand().range([height, 0]);
+var g0 = svg0.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("/static/tf_identification/results/barchart/FzzJAjUkIPIh9OfD9FM715300419440.json", function(error, data) {
+  	if (error) throw error;
+
+  	data.sort(function(a, b) { return a.value - b.value; });
+
+  	x.domain([0, d3.max(data, function(d) { return d.value; })]);
+    y.domain(data.map(function(d) { return d.tf; })).padding(0.1);
+    g0.append("g")
+        .attr("class", "x axis")
+       	.attr("transform", "translate(0," + height + ")")
+      	.call(d3.axisBottom(x).ticks(5).tickFormat(function(d) { return d; }).tickSizeInner([-height]));
+    g0.append("g")
+        .attr("class", "y axis")
+        .call(d3.axisLeft(y));
+    g0.append("text")
+      .attr("class", "title")
+      .attr("x", width/2)
+      .attr("y", 0 - (margin.top / 5))
+      .attr("text-anchor", "middle")
+        .attr("font-size", "20px")
+      .text("Top TFs");
+    g0.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", 0)
+        .attr("height", y.bandwidth())
+        .attr("y", function(d) { return y(d.tf); })
+        .attr("width", function(d) { return x(d.value); })
+        .on("mousemove", function(d){
+            tooltip0
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html((d.tf) + "<br>" + (d.value));
+        })
+    		.on("mouseout", function(d){ tooltip0.style("display", "none");});
+});
+</script>
+</p>
+                        <table class="table table-striped" style="text-align: center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Corr.</th>
+      <th scope="col">HGNC</th>
+      <th scope="col">Transcription factor name</th>
+      <th scope="col">Motif</th>
+      <th scope="col">WebLogo</th>
+    </tr>
+  </thead>
+  <tbody style='font-size: 15px;'>
+
+                 <tr>
+      <th scope="row">1</th>
+      <td>0.075</td>
+      <td>FEV</td>
+      <td>FEV, ETS transcription factor</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/FEV_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">2</th>
+      <td>0.071</td>
+      <td>ETV5</td>
+      <td>ETS variant 5</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETV5_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">3</th>
+      <td>0.069</td>
+      <td>REL</td>
+      <td>REL proto-oncogene, NF-kB subunit</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/REL_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">4</th>
+      <td>0.068</td>
+      <td>ETS2</td>
+      <td>ETS proto-oncogene 2, transcription factor</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS2_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">5</th>
+      <td>0.066</td>
+      <td>RELB</td>
+      <td>RELB proto-oncogene, NF-kB subunit</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RELB_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">6</th>
+      <td>0.065</td>
+      <td>NFKB1</td>
+      <td>nuclear factor kappa B subunit 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFKB1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">7</th>
+      <td>0.065</td>
+      <td>STAT3</td>
+      <td>signal transducer and activator of transcription 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT3_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">8</th>
+      <td>0.062</td>
+      <td>SPI1</td>
+      <td>Spi-1 proto-oncogene</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SPI1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">9</th>
+      <td>0.061</td>
+      <td>UBP1</td>
+      <td>upstream binding protein 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/UBP1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">10</th>
+      <td>0.058</td>
+      <td>IRF4</td>
+      <td>interferon regulatory factor 4</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF4_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">11</th>
+      <td>0.058</td>
+      <td>KLF3</td>
+      <td>Kruppel like factor 3</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/KLF3_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">12</th>
+      <td>0.058</td>
+      <td>RELA</td>
+      <td>RELA proto-oncogene, NF-kB subunit</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RELA_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">13</th>
+      <td>0.057</td>
+      <td>ETS2</td>
+      <td>ETS proto-oncogene 2, transcription factor</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">14</th>
+      <td>0.057</td>
+      <td>BCL11A</td>
+      <td>B cell CLL/lymphoma 11A</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/BCL11A_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">15</th>
+      <td>0.057</td>
+      <td>MZF1</td>
+      <td>myeloid zinc finger 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MZF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">16</th>
+      <td>0.056</td>
+      <td>SPI1</td>
+      <td>Spi-1 proto-oncogene</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SPI1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">17</th>
+      <td>0.055</td>
+      <td>IRF8</td>
+      <td>interferon regulatory factor 8</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF8_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">18</th>
+      <td>0.054</td>
+      <td>STAT6</td>
+      <td>signal transducer and activator of transcription 6</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT6_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">19</th>
+      <td>0.053</td>
+      <td>IRF1</td>
+      <td>interferon regulatory factor 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">20</th>
+      <td>0.052</td>
+      <td>IRF2</td>
+      <td>interferon regulatory factor 2</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">21</th>
+      <td>0.051</td>
+      <td>AR</td>
+      <td>androgen receptor</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/AR_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">22</th>
+      <td>0.051</td>
+      <td>ETS1</td>
+      <td>ETS proto-oncogene 1, transcription factor</td>
+      <td>motif5</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS1_motif5.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">23</th>
+      <td>0.05</td>
+      <td>NFKB1</td>
+      <td>nuclear factor kappa B subunit 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFKB1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">24</th>
+      <td>0.05</td>
+      <td>ERG</td>
+      <td>ERG, ETS transcription factor</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ERG_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">25</th>
+      <td>0.05</td>
+      <td>FLI1</td>
+      <td>Fli-1 proto-oncogene, ETS transcription factor</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/FLI1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">26</th>
+      <td>0.049</td>
+      <td>ETS1</td>
+      <td>ETS proto-oncogene 1, transcription factor</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">27</th>
+      <td>0.049</td>
+      <td>STAT1</td>
+      <td>signal transducer and activator of transcription 1</td>
+      <td>motif6</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT1_motif6.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">28</th>
+      <td>0.048</td>
+      <td>STAT2</td>
+      <td>signal transducer and activator of transcription 2</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">29</th>
+      <td>0.047</td>
+      <td>SPI1</td>
+      <td>Spi-1 proto-oncogene</td>
+      <td>motif4</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SPI1_motif4.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">30</th>
+      <td>0.047</td>
+      <td>SPIB</td>
+      <td>Spi-B transcription factor</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SPIB_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">31</th>
+      <td>0.046</td>
+      <td>MZF1</td>
+      <td>myeloid zinc finger 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MZF1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">32</th>
+      <td>0.046</td>
+      <td>MAX</td>
+      <td>MYC associated factor X</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MAX_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">33</th>
+      <td>0.044</td>
+      <td>HIVEP1</td>
+      <td>human immunodeficiency virus type I enhancer binding protein 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/HIVEP1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">34</th>
+      <td>0.044</td>
+      <td>BACH1</td>
+      <td>BRCA1 interacting protein C-terminal helicase 1</td>
+      <td>motif4</td>
+      <td><img src="/static/tf_identification/img/motiflogos/BACH1_motif4.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">35</th>
+      <td>0.043</td>
+      <td>STAT5A</td>
+      <td>signal transducer and activator of transcription 5A</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT5A_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">36</th>
+      <td>0.042</td>
+      <td>ZNF350</td>
+      <td>zinc finger protein 350</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZNF350_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">37</th>
+      <td>0.042</td>
+      <td>TAL1</td>
+      <td>TAL bHLH transcription factor 1, erythroid differentiation factor</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TAL1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">38</th>
+      <td>0.041</td>
+      <td>SMAD1</td>
+      <td>SMAD family member 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SMAD1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">39</th>
+      <td>0.041</td>
+      <td>CEBPA</td>
+      <td>CCAAT enhancer binding protein alpha</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/CEBPA_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">40</th>
+      <td>0.04</td>
+      <td>STAT6</td>
+      <td>signal transducer and activator of transcription 6</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT6_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">41</th>
+      <td>0.039</td>
+      <td>SALL4</td>
+      <td>spalt like transcription factor 4</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SALL4_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">42</th>
+      <td>0.039</td>
+      <td>NFKB1</td>
+      <td>nuclear factor kappa B subunit 1</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFKB1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">43</th>
+      <td>0.039</td>
+      <td>NR3C1</td>
+      <td>nuclear receptor subfamily 3 group C member 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NR3C1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">44</th>
+      <td>0.039</td>
+      <td>VEZF1</td>
+      <td>vascular endothelial zinc finger 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/VEZF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">45</th>
+      <td>0.039</td>
+      <td>IRF8</td>
+      <td>interferon regulatory factor 8</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF8_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">46</th>
+      <td>0.039</td>
+      <td>NFKB2</td>
+      <td>nuclear factor kappa B subunit 2</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFKB2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">47</th>
+      <td>0.038</td>
+      <td>STAT4</td>
+      <td>signal transducer and activator of transcription 4</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT4_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">48</th>
+      <td>0.038</td>
+      <td>TBX1</td>
+      <td>T-box 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TBX1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">49</th>
+      <td>0.038</td>
+      <td>ETV5</td>
+      <td>ETS variant 5</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETV5_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">50</th>
+      <td>0.038</td>
+      <td>NFATC3</td>
+      <td>nuclear factor of activated T cells 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFATC3_motif1.png" width="100px"></td>
+    </tr>
+          </tbody>
+</table>
+                      </div>
+                    </div>
+                  </div>
+                       <div class="card">
+                    <div class="card-header" id="heading1">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" >
+                          BATF_1
+                        </button>
+                        
+                      </h5>
+                    </div>
+
+                    <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+                      <div class="card-body">
+                        <style>
+.bar {
+	fill: #29b936;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+.x path {
+	display: none;
+}
+.toolTip {
+	position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #29b936;
+  padding: 14px;
+  text-align: center;
+}
+</style>
+<p>
+<svg id="svg1" width="960" height="600" class="center"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var svg1 = d3.select("#svg1"),
+    margin = {top: 20, right: 20, bottom: 30, left: 80},
+    width = +svg1.attr("width") - margin.left - margin.right,
+    height = +svg1.attr("height") - margin.top - margin.bottom;
+
+var tooltip1 = d3.select("body").append("div").attr("class", "toolTip");
+
+var x = d3.scaleLinear().range([0, width]);
+var y = d3.scaleBand().range([height, 0]);
+var g1 = svg1.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("/static/tf_identification/results/barchart/FzzJAjUkIPIh9OfD9FM715300419441.json", function(error, data) {
+  	if (error) throw error;
+
+  	data.sort(function(a, b) { return a.value - b.value; });
+
+  	x.domain([0, d3.max(data, function(d) { return d.value; })]);
+    y.domain(data.map(function(d) { return d.tf; })).padding(0.1);
+    g1.append("g")
+        .attr("class", "x axis")
+       	.attr("transform", "translate(0," + height + ")")
+      	.call(d3.axisBottom(x).ticks(5).tickFormat(function(d) { return d; }).tickSizeInner([-height]));
+    g1.append("g")
+        .attr("class", "y axis")
+        .call(d3.axisLeft(y));
+    g1.append("text")
+      .attr("class", "title")
+      .attr("x", width/2)
+      .attr("y", 0 - (margin.top / 5))
+      .attr("text-anchor", "middle")
+        .attr("font-size", "20px")
+      .text("Top TFs");
+    g1.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", 0)
+        .attr("height", y.bandwidth())
+        .attr("y", function(d) { return y(d.tf); })
+        .attr("width", function(d) { return x(d.value); })
+        .on("mousemove", function(d){
+            tooltip1
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html((d.tf) + "<br>" + (d.value));
+        })
+    		.on("mouseout", function(d){ tooltip1.style("display", "none");});
+});
+</script>
+</p>
+                        <table class="table table-striped" style="text-align: center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Corr.</th>
+      <th scope="col">HGNC</th>
+      <th scope="col">Transcription factor name</th>
+      <th scope="col">Motif</th>
+      <th scope="col">WebLogo</th>
+    </tr>
+  </thead>
+  <tbody style='font-size: 15px;'>
+
+                 <tr>
+      <th scope="row">1</th>
+      <td>0.029</td>
+      <td>ZIC1</td>
+      <td>Zic family member 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZIC1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">2</th>
+      <td>0.028</td>
+      <td>TAF1</td>
+      <td>TATA-box binding protein associated factor 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TAF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">3</th>
+      <td>0.028</td>
+      <td>ZNF740</td>
+      <td>zinc finger protein 740</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZNF740_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">4</th>
+      <td>0.028</td>
+      <td>REL</td>
+      <td>REL proto-oncogene, NF-kB subunit</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/REL_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">5</th>
+      <td>0.027</td>
+      <td>WT1</td>
+      <td>Wilms tumor 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/WT1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">6</th>
+      <td>0.027</td>
+      <td>MZF1</td>
+      <td>myeloid zinc finger 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MZF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">7</th>
+      <td>0.027</td>
+      <td>NR0B1</td>
+      <td>nuclear receptor subfamily 0 group B member 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NR0B1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">8</th>
+      <td>0.026</td>
+      <td>HIF1A</td>
+      <td>hypoxia inducible factor 1 subunit alpha</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/HIF1A_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">9</th>
+      <td>0.026</td>
+      <td>PATZ1</td>
+      <td>POZ/BTB and AT hook containing zinc finger 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/PATZ1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">10</th>
+      <td>0.026</td>
+      <td>E2F4</td>
+      <td>E2F transcription factor 4</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/E2F4_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">11</th>
+      <td>0.026</td>
+      <td>TFAP2B</td>
+      <td>transcription factor AP-2 beta</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2B_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">12</th>
+      <td>0.026</td>
+      <td>TFAP2E</td>
+      <td>transcription factor AP-2 epsilon</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2E_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">13</th>
+      <td>0.026</td>
+      <td>ETS2</td>
+      <td>ETS proto-oncogene 2, transcription factor</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS2_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">14</th>
+      <td>0.026</td>
+      <td>RUNX2</td>
+      <td>runt related transcription factor 2</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RUNX2_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">15</th>
+      <td>0.026</td>
+      <td>RFX1</td>
+      <td>regulatory factor X1</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RFX1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">16</th>
+      <td>0.025</td>
+      <td>ZIC3</td>
+      <td>Zic family member 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZIC3_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">17</th>
+      <td>0.025</td>
+      <td>ZIC3</td>
+      <td>Zic family member 3</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZIC3_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">18</th>
+      <td>0.025</td>
+      <td>FOXO6</td>
+      <td>forkhead box O6</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/FOXO6_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">19</th>
+      <td>0.025</td>
+      <td>TFAP2C</td>
+      <td>transcription factor AP-2 gamma</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2C_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">20</th>
+      <td>0.025</td>
+      <td>FEV</td>
+      <td>FEV, ETS transcription factor</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/FEV_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">21</th>
+      <td>0.025</td>
+      <td>ETS2</td>
+      <td>ETS proto-oncogene 2, transcription factor</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">22</th>
+      <td>0.025</td>
+      <td>PATZ1</td>
+      <td>POZ/BTB and AT hook containing zinc finger 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/PATZ1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">23</th>
+      <td>0.025</td>
+      <td>IRF3</td>
+      <td>interferon regulatory factor 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF3_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">24</th>
+      <td>0.025</td>
+      <td>TFAP2C</td>
+      <td>transcription factor AP-2 gamma</td>
+      <td>motif4</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2C_motif4.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">25</th>
+      <td>0.025</td>
+      <td>SALL4</td>
+      <td>spalt like transcription factor 4</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/SALL4_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">26</th>
+      <td>0.024</td>
+      <td>EGR1</td>
+      <td>early growth response 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/EGR1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">27</th>
+      <td>0.024</td>
+      <td>E2F1</td>
+      <td>E2F transcription factor 1</td>
+      <td>motif6</td>
+      <td><img src="/static/tf_identification/img/motiflogos/E2F1_motif6.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">28</th>
+      <td>0.024</td>
+      <td>TFAP2A</td>
+      <td>transcription factor AP-2 alpha</td>
+      <td>motif4</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2A_motif4.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">29</th>
+      <td>0.024</td>
+      <td>STAT5A</td>
+      <td>signal transducer and activator of transcription 5A</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT5A_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">30</th>
+      <td>0.024</td>
+      <td>MZF1</td>
+      <td>myeloid zinc finger 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MZF1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">31</th>
+      <td>0.024</td>
+      <td>NFE2</td>
+      <td>nuclear factor, erythroid 2</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFE2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">32</th>
+      <td>0.024</td>
+      <td>CTCFL</td>
+      <td>CCCTC-binding factor like</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/CTCFL_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">33</th>
+      <td>0.023</td>
+      <td>BATF3</td>
+      <td>basic leucine zipper ATF-like transcription factor 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/BATF3_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">34</th>
+      <td>0.023</td>
+      <td>PKNOX2</td>
+      <td>PBX/knotted 1 homeobox 2</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/PKNOX2_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">35</th>
+      <td>0.023</td>
+      <td>ETS1</td>
+      <td>ETS proto-oncogene 1, transcription factor</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">36</th>
+      <td>0.023</td>
+      <td>TFAP2A</td>
+      <td>transcription factor AP-2 alpha</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/TFAP2A_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">37</th>
+      <td>0.023</td>
+      <td>ETS1</td>
+      <td>ETS proto-oncogene 1, transcription factor</td>
+      <td>motif5</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ETS1_motif5.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">38</th>
+      <td>0.023</td>
+      <td>RREB1</td>
+      <td>ras responsive element binding protein 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RREB1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">39</th>
+      <td>0.022</td>
+      <td>PTF1A</td>
+      <td>pancreas associated transcription factor 1a</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/PTF1A_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">40</th>
+      <td>0.022</td>
+      <td>IRF1</td>
+      <td>interferon regulatory factor 1</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/IRF1_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">41</th>
+      <td>0.022</td>
+      <td>NR2F6</td>
+      <td>nuclear receptor subfamily 2 group F member 6</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NR2F6_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">42</th>
+      <td>0.022</td>
+      <td>RELB</td>
+      <td>RELB proto-oncogene, NF-kB subunit</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/RELB_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">43</th>
+      <td>0.022</td>
+      <td>MAZ</td>
+      <td>MYC associated zinc finger protein</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/MAZ_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">44</th>
+      <td>0.022</td>
+      <td>ZBTB4</td>
+      <td>zinc finger and BTB domain containing 4</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZBTB4_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">45</th>
+      <td>0.022</td>
+      <td>E2F1</td>
+      <td>E2F transcription factor 1</td>
+      <td>motif4</td>
+      <td><img src="/static/tf_identification/img/motiflogos/E2F1_motif4.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">46</th>
+      <td>0.022</td>
+      <td>PLAG1</td>
+      <td>PLAG1 zinc finger</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/PLAG1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">47</th>
+      <td>0.022</td>
+      <td>HSF1</td>
+      <td>heat shock transcription factor 1</td>
+      <td>motif3</td>
+      <td><img src="/static/tf_identification/img/motiflogos/HSF1_motif3.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">48</th>
+      <td>0.021</td>
+      <td>NFKB1</td>
+      <td>nuclear factor kappa B subunit 1</td>
+      <td>motif2</td>
+      <td><img src="/static/tf_identification/img/motiflogos/NFKB1_motif2.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">49</th>
+      <td>0.021</td>
+      <td>ZNF281</td>
+      <td>zinc finger protein 281</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/ZNF281_motif1.png" width="100px"></td>
+    </tr>
+                 <tr>
+      <th scope="row">50</th>
+      <td>0.021</td>
+      <td>STAT3</td>
+      <td>signal transducer and activator of transcription 3</td>
+      <td>motif1</td>
+      <td><img src="/static/tf_identification/img/motiflogos/STAT3_motif1.png" width="100px"></td>
+    </tr>
+          </tbody>
+</table>
+                      </div>
+                    </div>
+                  </div>
+            
+        </div>
+    </section>
+
+
+    <!--
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About</h2>
+            <p>This tool was created in Hao Li's lab at UCSF.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+{% endblock %}
