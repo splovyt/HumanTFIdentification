@@ -1,5 +1,5 @@
 import pandas as pd
-from scipy.stats import spearmanr
+from scipy.stats import spearmanr, pearsonr
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from time import sleep, time
@@ -53,9 +53,9 @@ def test_correlation(motif_df, expression_df, absolute_corr=False, absolute_expr
         for mtf in motif_df.columns:
             ## take the absolute values of the correlation vector (default=False)
             if absolute_corr:
-                c.append(abs(spearmanr(motif_df[mtf], expression_df[expr])[0]))
+                c.append(abs(pearsonr(motif_df[mtf], expression_df[expr])[0]))
             else:
-                c.append(spearmanr(motif_df[mtf], expression_df[expr])[0])
+                c.append(pearsonr(motif_df[mtf], expression_df[expr])[0])
         correlations[expr] = c
     correlations['Symbols'] = motif_df.columns
     correlations.set_index('Symbols', inplace=True)
@@ -67,7 +67,9 @@ def start_GOrilla(topTFs_set, allTFs_set):
     # Initialize the headless browser
     chrome_options = Options()
     chrome_options.add_argument("headless")
-    try: driver = webdriver.Chrome(BASE_DIR + '/tf_identification/algorithm/chromedriver_linux',
+    try:
+        os.system('chmod a+x ' + BASE_DIR + '/tf_identification/algorithm/chromedriver_linux')
+        driver = webdriver.Chrome(BASE_DIR + '/tf_identification/algorithm/chromedriver_linux',
                               chrome_options=chrome_options)
     except: driver = webdriver.Chrome(BASE_DIR + '/tf_identification/algorithm/chromedriver_mac',
                               chrome_options=chrome_options)
@@ -314,7 +316,8 @@ def clean(directory):
             except: pass
 
 # Load data
-motif_vectors = load_motif_vectors(BASE_DIR + '/tf_identification/algorithm/Li_lab_implementation_vectors.pickle')
+#motif_vectors = load_motif_vectors(BASE_DIR + '/tf_identification/algorithm/Li_lab_implementation_vectors.pickle')
+motif_vectors = load_motif_vectors(BASE_DIR + '/tf_identification/algorithm/FIMO_log2.pickle')
 
 process_ID = GE_filepath[-30:]
 expression_vectors = load_expression_FC(GE_filepath)

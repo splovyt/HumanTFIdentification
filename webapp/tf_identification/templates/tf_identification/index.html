@@ -7,7 +7,7 @@ Li Lab - UCSF
 {% block content %}
     <header>
       <div class="container text-center">
-      <a style="max-width: inherit" href="http://mobydick.ucsf.edu/">
+      <a style="max-width: inherit" href="http://mobydick.ucsf.edu/" target="_blank">
         <img src="/static/tf_identification/img/lilab_logo.png" class="center" style="max-width: inherit">
       </a>
         <a class="btn btn-primary btn-large navbar-brand js-scroll-trigger" href="/#tf_identification">Human TF identification</a>
@@ -19,7 +19,7 @@ Li Lab - UCSF
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Human transcription factor identification</h2>
-            <p class="lead" style="font-size: 14px;">Identify crucial human transcription factors by uploading a .csv file of gene expression fold changes.</p>
+              <p class="lead" style="font-size: 14px;">Identify crucial human transcription factors by uploading a .csv file of <b style="font-weight: 900;">log2-transformed (!)</b> gene expression fold changes.</p>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <p><input type="file" name="file" id="id_file" required=""></p>
@@ -56,7 +56,7 @@ Li Lab - UCSF
                   (comma separated values) with the measured <b style="font-weight: 900;">gene names as the first (index-) column</b> and the <b style="font-weight: 900;">following columns
                   the different experimental conditions</b> for which gene expression was characterized. <b style="font-weight: 900;">In other words,
                   the .CSV file must contain an index column and a header.</b><br>
-                  Gene expression data can be either input as fold changes (FC) or log-transformed fold changes.
+                  Gene expression fold changes (FC) <b style="font-weight: 900;">should be log2-transformed</b> to achieve the best results.
               </p>
               <p style="font-size: 14px;">
                   An example of the desired format can be found below. <br>

@@ -44,12 +44,10 @@ class HomeView(View):
                                  filename = process_ID,
                                  gorilla = go,
                                  topTF = request.POST['topTF']) # see definition above
-            return redirect("/tfidentificationresults/" + process_ID + '/')
+            return redirect("tfidentificationresults/" + process_ID + '/')
         else:
             pass
         # TODO: implement error handling if the form is not valid
-
-
 
 class TFIdentificationResultView(View):
     ''' This view serves as the waiting and the result page for the TF identification algorithm.'''

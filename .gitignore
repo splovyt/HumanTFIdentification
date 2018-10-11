@@ -2,3 +2,10 @@ UCSF_logo.psd
 venv
 .idea/
 webapp/tf_identification/algorithm/Li_lab_implementation_vectors.pickle
+webapp/useruploads/
+webapp/tf_identification/templates/tf_identification/results/
+webapp/tf_identification/static/tf_identification/results/
+webapp/tf_identification/__pycache__/
+webapp/tf_identification/algorithm/FIMO_log2.pickle
+webapp/tf_identification/algorithm/input_data
+webapp/tf_identification/algorithm/sample_data/
