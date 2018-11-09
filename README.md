@@ -9,3 +9,7 @@ This application is made in Django, Python, HTML, CSS, and JavaScript (D3).
 ### Example output of an old-vs-young gene expression contrast:
 
 ![alt text](https://raw.githubusercontent.com/splovyt/HumanTFIdentification/master/web_interface_screenshot.png)
+
+### Example output of a downstream cluster analysis:
+
+![alt text](https://raw.githubusercontent.com/splovyt/HumanTFIdentification/master/cluster_analysis_example.png)
