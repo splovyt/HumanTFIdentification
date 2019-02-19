@@ -22,7 +22,7 @@
                 "sha256:dd46d87af4c1bf54f4c926c3cfa41dc2b5c15782f15e4329752ce65f5dad1c37"
             ],
             "index": "pypi",
-            "version": "==2.1.5"
+            "version": "==2.1.6"
         },
         "numpy": {
             "hashes": [
